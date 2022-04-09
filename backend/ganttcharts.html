@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+    integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+
+  <link rel="stylesheet" type="text/css" href="./css/bootstrap-simplex.css">
+  <link rel="stylesheet" href="../style.css">
+
+  <style>
+    .pie {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .chartMenu {
+      flex-direction: column;
+      width: 50vw;
+      height: 40px;
+      color: rgba(255, 26, 104, 1);
+    }
+
+    .chartMenu p {
+      padding: 10px;
+      font-size: 20px;
+      text-align: center;
+    }
+
+    .chartCard {
+      width: 50vw;
+      height: calc(100vh - 100px);
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .chartBox {
+      width: 400px;
+      padding: 20px;
+      border-radius: 20px;
+      border: solid 3px rgba(255, 26, 104, 1);
+      background: white;
+      color: black;
+    }
+
+    .barChart {
+      width: 70vw;
+      flex: 1;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 50px;
+      font-weight: bolder;
+      color: black;
+    }
+
+    @media only screen and (max-width:730px){
+      .datavisulization{
+          display: none;
+      }
+  }
+  </style>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> -->
+  <!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script> -->
+  <script src="./js/bootstrap.min.js"></script>
+  <script src="./js/bootstrap-slider.js"></script>
+  <link rel="stylesheet" type="text/css" href="./css/cpu-scheduler.css">
+
+  <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    showProcessingMessages: false,
+    messageStyle: "none",
+    tex2jax: { inlineMath: [['$','$'],['\\(','\\)']] }
+  });
+  </script>
+
+  <!-- <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  </script> -->
+  <script type="text/javascript" src="./js/MathJaxSetup.js">
+  </script>
+
+  
+
+  <title> CPU scheduling</title>
+</head>
+
+
+<body>
+
+  <nav style="background-color: #151D3B;" class="navStyle">
+    <a href="./index.html" style="color: #fff;">OS LAB</a>
+    <div class="nav-links" id="navLinks">
+      <i class="fas fa-window-close" onclick="hideMenu()"></i>
+      <ul>
+        <li><a href="../index.html">HOME</a></li>
+        <li><a href="../docs.html">DOCS</a></li>
+        <!-- <li><a href="blog.html">BLOG</a></li> -->
+        <li><a href="ganttcharts.html">SIMULATOR</a></li>
+        <li><a href="../about.html">ABOUT</a></li>
+
+      </ul>
+    </div>
+    <i class="fas fa-bars" onclick="showMenu()"></i>
+  </nav>
+
+
+  <div class="container">
+
+
+
+    <h2 style="text-align: center;">CPU&nbsp;scheduler</h2>
+    <p id="adj_counter" style="text-align: center;" class="lead">Type values into the table and the chart on the bottom
+      will show how this runs</p>
+
+
+
+
+    <table class="table table-bordered table-condensed" id="inputTable">
+      <thead>
+        <tr>
+          <th>Process:</th>
+          <th>Arrival Time:</th>
+          <th>Burst Time:</th>
+          <th class="priority collapse">Priority:</th>
+        </tr>
+      </thead>
+      <tbody id="processTable">
+        <tr id="row_1" class="collapse in">
+          <th> P1</th>
+          <td><input id="arrive_1" type="number" class="form-control" min="0" value="0" /></td>
+          <td><input type="number" id="burst_1" class="form-control" min="1" value="5" /></td>
+          <td class="priority collapse"><input id="priority_1" type="number" class="form-control" value="1" /></td>
+        </tr>
+
+        <tr id="row_2" class="collapse in">
+          <th> P2 </th>
+          <td><input id="arrive_2" type="number" class="form-control" value="0" /></td>
+          <td><input type="number" id="burst_2" class="form-control" value="2" /></td>
+          <td class="priority collapse"><input id="priority_2" type="number" class="form-control" value="2" /></td>
+        </tr>
+
+        <tr id="row_3" class="collapse in">
+          <th> P3 </th>
+          <td><input id="arrive_3" type="number" class="form-control" value="0" /></td>
+          <td><input id="burst_3" type="number" class="form-control" value="4" /></td>
+          <td class="priority collapse"><input id="priority_3" type="number" class="form-control" value="3" /></td>
+        </tr>
+
+        <tr id="row_4" class="collapse ">
+          <th> P4 </th>
+          <td><input id="arrive_4" type="number" class="form-control" value="0" /></td>
+          <td><input id="burst_4" type="number" class="form-control" value="1" /></td>
+          <td class="priority collapse"><input id="priority_4" type="number" class="form-control" value="4" /></td>
+        </tr>
+
+        <tr id="row_5" class="collapse">
+          <th> P5 </th>
+          <td><input id="arrive_5" type="number" class="form-control" value="0" /></td>
+          <td><input id="burst_5" type="number" class="form-control" value="1" /></td>
+          <td class="priority collapse"><input id="priority_5" type="number" class="form-control" value="5" /></td>
+        </tr>
+
+        <tr id="row_6" class="collapse">
+          <th> P6 </th>
+          <td><input id="arrive_6" type="number" class="form-control" value="0" /></td>
+          <td><input id="burst_6" type="number" class="form-control" value="1" /></td>
+          <td class="priority collapse"><input id="priority_6" type="number" class="form-control" value="6" /></td>
+        </tr>
+
+        <tr id="row_7" class="collapse">
+          <th> P7 </th>
+          <td><input id="arrive_7" type="number" class="form-control" value="0" /></td>
+          <td><input id="burst_7" type="number" class="form-control" value="1" /></td>
+          <td class="priority collapse"><input id="priority_7" type="number" class="form-control" value="7" /></td>
+        </tr>
+
+        <tr id="row_8" class="collapse">
+          <th> P8 </th>
+          <td><input id="arrive_8" type="number" class="form-control" value="0" /></td>
+          <td><input id="burst_8" type="number" class="form-control" value="1" /></td>
+          <td class="priority collapse"><input id="priority_8" type="number" class="form-control" value="8" /></td>
+        </tr>
+
+        <tr id="row_9" class="collapse">
+          <th> P9 </th>
+          <td><input id="arrive_9" type="number" class="form-control" value="0" /></td>
+          <td><input id="burst_9" type="number" class="form-control" value="1" /></td>
+          <td class="priority collapse"><input id="priority_9" type="number" class="form-control" value="9" /></td>
+        </tr>
+
+        <tr id="row_10" class="collapse">
+          <th> P10 </th>
+          <td><input id="arrive_10" type="number" class="form-control" value="0" /></td>
+          <td><input id="burst_10" type="number" class="form-control" value="1" /></td>
+          <td class="priority collapse"><input id="priority_10" type="number" class="form-control" value="10" /></td>
+        </tr>
+
+      </tbody>
+    </table>
+
+
+    <br>
+
+
+
+
+
+    <div class="well">
+
+      <div class="row">
+
+        <div class="col-md-4">
+          <div style=" display:inline-block;">
+            <label>Algorithm:</label>
+          </div>
+
+
+          <div class="btn-group algorithm_dropdown" style="margin-left:5px;">
+            <button type="button" id="algorithm_button" class="btn btn-info dropdown-toggle" data-toggle="dropdown"
+              aria-expanded="false">
+              FCFS <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+              <li><a calcStyle="FCFS" id="simple_calc">First Come First Served</a></li>
+              <li><a calcStyle="SJF" id="simple_calc">Shortest Job First (non-premptive)</a></li>
+              <li><a calcStyle="SRJF" id="fancy_calc">Shortest Remaing Job First (premptive)</a></li>
+              <li><a calcStyle="Round Robin" id="fast_calc">Round Robin</a></li>
+              <li><a calcStyle="Priority" id="fast_calc">Priority</a></li>
+            </ul>
+          </div>
+
+          <p style="margin-top:15px;" id="algorithm_explanation">
+          </p>
+
+        </div><!-- /column -->
+        <div class="col-md-4">
+          <div>
+            <label>Number of Processes:</label>
+          </div>
+          <div class="input-group">
+            <span class="input-group-btn">
+              <button id='remove_row' type="button" class="btn btn-default btn-number minusbtn" data-type="minus">
+                <span class="glyphicon glyphicon-minus"></span>
+              </button>
+            </span>
+            <input id="proccess_num" disabled="disabled" class="form-control input-number" value="3">
+            <span class="input-group-btn">
+              <button id='add_row' type="button" class="btn btn-default btn-number plusbtn" data-type="plus">
+                <span class="glyphicon glyphicon-plus"></span>
+              </button>
+            </span>
+          </div>
+
+
+          <div style="margin-top:20px; ">
+            <label>Context Switch Time:</label>
+          </div>
+          <div class="input-group">
+            <span class="input-group-btn">
+              <button id="subtract_context" type="button" class="btn btn-default btn-number" data-type="minus"
+                data-field="quant[1]">
+                <span class="glyphicon glyphicon-minus"></span>
+              </button>
+            </span>
+            <input id="enter_context" type="text" name="quant[1]" class="form-control input-number" value="0.0"
+              style="background-color:white">
+            <span class="input-group-btn">
+              <button id="add_context" type="button" class="btn btn-default btn-number" data-type="plus"
+                data-field="quant[1]">
+                <span class="glyphicon glyphicon-plus"></span>
+              </button>
+            </span>
+          </div>
+
+          <div class="hidden" id="solver_group">
+            <div style="margin-top:20px; ">
+              <label>Time Quantum:</label>
+            </div>
+            <div class="input-group">
+              <span class="input-group-btn">
+                <button id="subtract_quantum" type="button" class="btn btn-default btn-number" data-type="minus"
+                  data-field="quant[1]">
+                  <span class="glyphicon glyphicon-minus"></span>
+                </button>
+              </span>
+              <input id="enter_quantum" type="text" name="quant[1]" class="form-control input-number" value="2"
+                style="background-color:white">
+              <span class="input-group-btn">
+                <button id="add_quantum" type="button" class="btn btn-default btn-number" data-type="plus"
+                  data-field="quant[1]">
+                  <span class="glyphicon glyphicon-plus"></span>
+                </button>
+              </span>
+            </div>
+          </div>
+
+
+
+        </div><!-- /column -->
+
+
+        <div style="display: block; text-align: center;">
+          <p>Click on the run button to show the Output Table</p>
+          <button id="runBtn" class="runButton">Run</button>
+        </div>
+
+        <div style="display: block; text-align: center;">
+          <p>Click on the Reset button to run another program</p>
+          <button onclick=(location.reload()) class="runButton">Reset</button>
+        </div>
+
+        <!-- <div class="col-md-4" style="margin-top:20px;">
+
+      <div id="explanation-equation"> 
+      </div>
+
+      <div id="MathPreview" >
+      </div>
+
+      <div  id="MathBuffer" >
+    </div>
+  </div> -->
+
+        <!-- /column -->
+
+
+      </div><!-- /row -->
+
+    </div><!-- /well -->
+
+
+
+    <div class="progress" style="height:25px;margin-bottom:0px;">
+
+    </div>
+    <ul class="tick-marks ruler" id="rule2" data-items="10"></ul>
+
+
+    <hr color="#001d2c" style="margin-top: 35px;">
+
+    <!-- <div id="outputDiv"></div> -->
+
+    <h1 style="text-align: center;">Output Table</h1>
+    <hr>
+
+    <table class="table table-bordered table-condensed" id="outputTable" style="margin-bottom: 50px;">
+      <thead>
+        <tr>
+          <th style="background-color: #9adcff;">Process:</th>
+          <th style="background-color: #9ADCFF;">Arrival Time:</th>
+          <th style="background-color: #9ADCFF;">Burst Time:</th>
+          <!-- <th class="priority collapse">Priority:</th> -->
+          <th style="background-color: #9ADCFF;">Completion Time: </th>
+          <th style="background-color: #9ADCFF;">Turn around Time: </th>
+          <th style="background-color: #9ADCFF;">Waiting Time: </th>
+        </tr>
+      </thead>
+
+    </table>
+
+
+
+
+    <div class="datavisulization">
+    <h2 style="text-align: center; margin-bottom: 40px;">Data Visulization</h2>
+
+
+    <!-- <div class="barChart">
+      <canvas id="myBarChart"></canvas>
+    </div> -->
+
+    <hr>
+    <div class="pie" id="chartdiv">
+      <div class="first">
+        <div class="chartMenu">
+          <p>Waiting Time Chart</p>
+        </div>
+        <div class="chartCard">
+          <div class="chartBox">
+            <canvas id="myChart" width="400" height="400"></canvas>
+            <!-- <canvas id="myChart"></canvas> -->
+          </div>
+        </div>
+
+
+      </div>
+      <div class="second">
+        <div class="chartMenu">
+          <p>Turn around Time Chart</p>
+        </div>
+        <div class="chartCard">
+          <div class="chartBox">
+            <!-- <canvas id="myChart" width="400" height="400"></canvas> -->
+            <canvas id="mytatChart" width="400" height="400"></canvas>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+    <span style="font-size: large; color: rgb(3, 27, 94);">CPU Utilization:
+      <div id="utilization" style="color:rgba(255, 26, 104, 1);"></div>
+    </span>
+    <span style="font-size: large; color: rgb(3, 27, 94);">Average waiting time:
+      <div id="avgwt" style="color:rgba(255, 26, 104, 1);"></div>
+    </span>
+    <span style="font-size: large; color: rgb(3, 27, 94);">Average turn around time:
+      <div id="avgtat" style="color:rgba(255, 26, 104, 1);"></div>
+    </span>
+
+    <!-- <div class="col-md-4" style="margin-top:20px;">
+
+  <div id="explanation-equation"> 
+  </div>
+
+  <div id="MathPreview" >
+  </div>
+
+  <div  id="MathBuffer" >
+</div>
+</div> -->
+
+  </div><!-- /containter -->
+
+  <section class="footer">
+    <!-- <h4>About Us</h4>
+  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta pariatur eveniet eaque provident error velit totam quos. Corrupti sunt omnis<br>  eligendi ut enim, sed magnamquo laboriosam, aspernatur nulla ipsum commodi itaque accusantium sapiente!</p> -->
+
+    <div class="icons">
+      <a href="https://www.facebook.com"><i class="fab fa-facebook"></i></a>
+      <a href="https://www.instagram.com/invites/contact/?i=17s1o7wfms500&utm_content=i08g8yn"><i
+          class="fab fa-instagram"></i></a>
+      <a href="https://twitter.com/Krutarth12345?t=JASTMDZLzUB4VOR-OEd_kg&s=09"><i class="fab fa-twitter"></i></a>
+      <a href="https://www.linkedin.com/in/krutarth-patel-653065205 "><i class="fab fa-linkedin"></i></a>
+    </div>
+
+    <p>Made With <i class="far fa-heart"></i> by G5-team1</p>
+    <p> <i class="fa fa-copyright"></i> copyright 2022 || All rights reserved</p>
+  </section>
+
+
+
+
+  
+  <!-- <script src="js/new.js"></script> -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-datalabels/2.0.0/chartjs-plugin-datalabels.min.js"
+    integrity="sha512-R/QOHLpV1Ggq22vfDAWYOaMd5RopHrJNMxi8/lJu8Oihwi4Ho4BRFeiMiCefn9rasajKjnx9/fTQ/xkWnkDACg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script src="./js/cpu-scheduler.js"> </script>
+  <!-- <script>
+    Preview.Init();
+    Preview.Update();
+
+  </script> -->
+
+  <script>
+    var navLinks = document.getElementById("navLinks");
+    function showMenu() {
+      navLinks.style.right = "0";
+    }
+
+    function hideMenu() {
+      navLinks.style.right = "-200px";
+    }
+
+  </script>
+
+</body>
+
+</html>

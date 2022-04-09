@@ -1,0 +1,405 @@
+
+/* makes sure the cursor is pointer on all dropdown menu buttons*/
+a{
+  cursor: pointer;
+}
+
+
+/* prevents everything besides input field from being highlighted*/
+
+*:not(input) {
+
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* use regular cursor when highlighting paragraphs, since text can't be highlighted */
+p:hover, h2:hover{
+  cursor:default;
+}
+
+/* input form looked wierd without the text being indented */
+.form-control{
+  
+  text-indent: 8px;
+}
+
+/* don't want the input field taking up whole screen*/
+.input-group {
+
+  max-width:200px;
+}
+
+
+.progress .progress-bar
+{
+  font-size: 13px;
+  line-height: 21px;
+}
+.progress-bar-idle{
+  background-color: #f5f5f5;
+
+}
+
+.progress-bar-context{
+  background-color: #000;
+
+}
+
+.progress-bar-first{
+  background-color: #3cb521;
+
+}
+
+.progress-bar-second{
+  background-color: #ff8800;
+
+}
+
+.progress-bar-third{
+  background-color: #9c27b0;
+
+}
+
+
+
+.progress-bar-fourth{
+  background-color: #18bc9c;
+
+}
+
+.progress-bar-fifth{
+  background-color: #DF3D82;
+
+}
+
+.progress-bar-sixth{
+  background-color: #150379;
+
+}
+
+.progress-bar-seventh{
+  background-color: #ff3f00;
+
+}
+
+.progress-bar-eighth{
+  background-color: #a12568;
+
+}
+
+.progress-bar-ninth{
+  background-color: #7b113a;
+
+}
+
+.progress-bar-tenth{
+  background-color: #086e7d;
+
+}
+
+.input-number
+{
+  text-indent: 0px;
+  text-align: center;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+table input {
+  display: block !important; 
+  padding: 0 !important; 
+  margin: 0 !important; 
+  border: 0 !important; 
+  width: 100% !important; 
+
+  border-radius: 0 !important; 
+  line-height: 1 !important;
+}
+
+table input:hover{
+  background-color: #f4f4f4;
+  color:#000;
+}
+
+#outputTable th,
+#outputTable td{
+  padding: 10px !important;
+  color: #000;
+}
+
+td {
+  margin: 0 !important; 
+  padding: 0 !important;
+  
+}
+
+ input[type=number]::-webkit-inner-spin-button,
+ input[type=number]::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+ }
+
+ input[type=number] {
+      -moz-appearance:textfield;
+ }
+
+
+.table-left-heading {
+    min-width: 90px !important; 
+}
+
+
+
+.ruler, .ruler li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: inline-block;
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box ;
+    box-sizing:content-box ; 
+}
+/* IE6-7 Fix */
+.ruler, .ruler li {
+    *display: inline;
+}
+.ruler {
+
+    border-radius: 2px;
+    
+    margin: 0;
+    height: 0em;
+    padding-right: 1cm;
+    white-space: nowrap;
+
+}
+.ruler li {
+    width: 2em;
+    margin: 0.5em -1em -1em;
+    text-align: center;
+    position: relative;
+
+}
+
+.pie-legend li span{
+    width: 1em;
+    height: 1em;
+    display: inline-block;
+    margin-right: 5px;
+}
+.table-legend
+{
+    width: 1.5em;
+    height: 1.5em;
+    display: inline-block;
+    margin-right: 5px;
+}
+
+.pie-legend {
+    list-style: none;    
+}
+
+.ruler li:before {
+    content: '';
+    position: absolute;
+    border-left: 1px solid black;
+    height: 1em;
+    top: -1em;
+    right: 1em;
+}
+
+
+.tick-marks
+{
+  position: absolute; 
+  z-index: -1; 
+  margin-top:5px;
+}
+
+
+legend .color-sample {
+  display: block;
+  float: left;
+  width: 1em;
+  height: 1em;
+  border: 2px solid;
+  border-radius: 0.5em;
+  margin-right: 0.5em;
+}
+
+.legend {
+    width: 10em;
+}
+
+.legend .title {
+    display: block;
+    margin-bottom: 0.5em;
+    line-height: 1.2em;
+    padding: 0 0.3em;
+}
+
+.legend .color-sample {
+    display: block;
+    float: left;
+    width: 1em;
+    height: 1em;
+    border: 2px solid; /* Comment out if you don't want to show the fillColor */
+    border-radius: 0.5em; /* Comment out if you prefer squarish samples */
+    margin-right: 0.5em;
+}
+
+
+#line1-legend{
+  border-color: rgba(220, 220, 220, 0.498039); 
+  background-color: rgb(220, 220, 220);
+}
+
+#line2-legend{
+  border-color: rgba(151, 187, 205, 0.498039); 
+  background-color: rgb(151, 187, 205);
+}
+
+
+.equation-text
+{
+  font-size: 15px;
+}
+
+.equation-line
+{
+  position:relative;
+}
+
+.equation-line:hover
+{
+  background-color: #f4f4f4;
+}
+
+.equation-line-selected
+{
+  background-color: #ccc;
+}
+
+.table-row-selected, .table-row-selected td input
+{
+  background-color: #f4f4f4 !important;
+
+  color: #000;
+
+}
+
+.form-control[disabled]
+{
+  background-color: inherit;
+}
+
+
+
+
+
+.panel-body
+{
+  position:relative;
+}
+
+#crit {
+position:relative;
+}
+
+
+
+.btn-arrow-right,
+.btn-arrow-left {
+    position: relative;
+    padding-left: 18px;
+    padding-right: 18px;
+}
+.btn-arrow-right {
+    padding-left: 36px;
+}
+.btn-arrow-left {
+    padding-right: 36px;
+}
+.btn-arrow-right:before,
+.btn-arrow-right:after,
+.btn-arrow-left:before,
+.btn-arrow-left:after { /* make two squares (before and after), looking similar to the button */
+    content:"";
+    position: absolute;
+    top: 5px; /* move it down because of rounded corners */
+    width: 22px; /* same as height */
+    height: 22px; /* button_outer_height / sqrt(2) */
+    background: inherit; /* use parent background */
+    border: inherit; /* use parent border */
+    border-left-color: transparent; /* hide left border */
+    border-bottom-color: transparent; /* hide bottom border */
+    border-radius: 0px 4px 0px 0px; /* round arrow corner, the shorthand property doesn't accept "inherit" so it is set to 4px */
+    -webkit-border-radius: 0px 4px 0px 0px;
+    -moz-border-radius: 0px 4px 0px 0px;
+}
+.btn-arrow-right:before,
+.btn-arrow-right:after {
+    transform: rotate(45deg); /* rotate right arrow squares 45 deg to point right */
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+}
+.btn-arrow-left:before,
+.btn-arrow-left:after {
+    transform: rotate(225deg); /* rotate left arrow squares 225 deg to point left */
+    -webkit-transform: rotate(225deg);
+    -moz-transform: rotate(225deg);
+    -o-transform: rotate(225deg);
+    -ms-transform: rotate(225deg);
+}
+.btn-arrow-right:before,
+.btn-arrow-left:before { /* align the "before" square to the left */
+    left: -11px;
+}
+.btn-arrow-right:after,
+.btn-arrow-left:after { /* align the "after" square to the right */
+    right: -11px;
+}
+.btn-arrow-right:after,
+.btn-arrow-left:before { /* bring arrow pointers to front */
+    z-index: 1;
+}
+.btn-arrow-right:before,
+.btn-arrow-left:after { /* hide arrow tails background */
+    background-color: white;
+}
+
+.btn-info {
+  color: #fff;
+  background-color: #5bc0de;
+  border-color: #46b8da;
+}
+
+.btn-info:hover {
+  background-image: none;
+}
+.btn {
+  display: inline-block;
+  margin-bottom: 0;
+  font-weight: 400;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  background-image: none;
+  border: 1px solid transparent;
+  white-space: nowrap;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  border-radius: 4px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
