@@ -10,6 +10,7 @@
 
   <link rel="stylesheet" type="text/css" href="./css/bootstrap-simplex.css">
   <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="./css/explanation.css">
 
   <style>
     .pie {
@@ -318,14 +319,6 @@
 
         <!-- <div class="col-md-4" style="margin-top:20px;">
 
-      <div id="explanation-equation"> 
-      </div>
-
-      <div id="MathPreview" >
-      </div>
-
-      <div  id="MathBuffer" >
-    </div>
   </div> -->
 
         <!-- /column -->
@@ -417,23 +410,20 @@
       <div id="avgtat" style="color:rgba(255, 26, 104, 1);"></div>
     </span>
 
-    <!-- <div class="col-md-4" style="margin-top:20px;">
+    <button id="explanation">Show Explanation</button>
+  
 
-  <div id="explanation-equation"> 
-  </div>
-
-  <div id="MathPreview" >
-  </div>
-
-  <div  id="MathBuffer" >
-</div>
-</div> -->
+      <div class="explain container_docs" id="ex">
+        <h1>Algorithm Explanation</h1>
+        <p style="color: #FD5D5D; font-size: large;">User Input :</p>
+        <p id="input"></p>
+        <p id="steps"></p>
+      </div>
 
   </div><!-- /containter -->
 
   <section class="footer">
-    <!-- <h4>About Us</h4>
-  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta pariatur eveniet eaque provident error velit totam quos. Corrupti sunt omnis<br>  eligendi ut enim, sed magnamquo laboriosam, aspernatur nulla ipsum commodi itaque accusantium sapiente!</p> -->
+    
 
     <div class="icons">
       <a href="https://www.facebook.com"><i class="fab fa-facebook"></i></a>
@@ -458,11 +448,7 @@
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     <script src="./js/cpu-scheduler.js"> </script>
-  <!-- <script>
-    Preview.Init();
-    Preview.Update();
-
-  </script> -->
+  
 
   <script>
     var navLinks = document.getElementById("navLinks");
