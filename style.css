@@ -141,7 +141,7 @@ nav a {
     .nav-links{
         position: fixed;
         background: #f44336;
-        height: 100vh;
+        height: 100%;
         top:0;
         right:-250px;
         width:200px;
